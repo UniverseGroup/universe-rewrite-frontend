@@ -57,7 +57,6 @@ export default function Addbot(){
                                     const Resp = await api(localStorage.getItem('userToken')).post('bots/submit',{json:values})
                                     if(Resp.ok){
                                         const data = await Resp.json()
-                                        console.log(data)
                                         window.scrollTo({
                                             top: 0,
                                             behavior: 'smooth'
