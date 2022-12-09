@@ -169,9 +169,9 @@ export default function Index(){
                         </div>
                     </div>
                     <div className="flex flex-col items-center justify-center w-full">
-                    <button className="bg-blue-600 text-white rounded-md flex hover:bg-blue-700 cursor-pointer sm:px-64 px-3 py-4 mb-1">
+                    <Link href="/addbot" passHref><button className="bg-blue-600 text-white rounded-md flex hover:bg-blue-700 cursor-pointer sm:px-64 px-3 py-4 mb-1">
                         <Image src="/svg/bot.svg" width={25} height={25} alt={"bot"}/>봇 등록하기
-                    </button>
+                    </button></Link>
                     </div>
 
                 </div>

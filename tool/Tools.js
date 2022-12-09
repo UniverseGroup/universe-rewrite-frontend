@@ -1,5 +1,5 @@
 import jsonwebtoken from 'jsonwebtoken';
-
+import ky from 'ky-universal';
 export function redirectTo(router, to) {
     router.push(to)
     return
@@ -28,3 +28,18 @@ export function getProfileImg(id,avatar){
         return 'https://cdn.discordapp.com/embed/avatars/0.png'
     }
 }
+
+export const api = (jwt) => ky.create({
+    prefixUrl: "http://localhost:3000/api",
+    hooks: {
+        beforeRequest: [
+            request => {
+                request.headers.set('Authorization', `Bearer ${jwt}`)
+            }
+        ]
+    }
+})
+
+export const botApi = () => ky.create({
+    prefixUrl: "http://127.0.0.1:5000"
+})

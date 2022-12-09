@@ -6,6 +6,7 @@ import {AddBotSubmitSchema} from "../tool/Yup";
 import {botCategories, library} from "../tool/Constants";
 import Image from "next/image";
 import {MCaptchaWidget}  from "@mcaptcha/react-glue"
+import { api } from "../tool/Tools";
 const ScrollButton = dynamic(() => import("../components/TopBtn"), {ssr: false});
 const Input = dynamic(() => import("../components/Form/Input"));
 const CheckBox = dynamic(() => import("../components/Form/CheckBox"));
@@ -51,16 +52,11 @@ export default function Addbot(){
                         </p>
                         <Formik initialValues={initialValues}
                                 validationSchema={AddBotSubmitSchema}
-                                onSubmit={(values) => {
+                                onSubmit={async (values) => {
                                     values.captcha = document.getElementById('mcaptcha__token').value;
-                                    console.log(values)
-                                    fetch('http://localhost:5000/submit',{
-                                        method:"POST",
-                                        headers: {
-                                            'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify(values),
-                                    }).then(res => res.json()).then(data => {
+                                    const Resp = await api(localStorage.getItem('userToken')).post('bots/submit',{json:values})
+                                    if(Resp.ok){
+                                        const data = await Resp.json()
                                         console.log(data)
                                         window.scrollTo({
                                             top: 0,
@@ -68,15 +64,11 @@ export default function Addbot(){
                                             /* you can also use 'auto' behaviour
                                                 in place of 'smooth' */
                                         });
-                                        if(data.code===200){
-                                            alert("성공적으로 등록되었습니다!")
-                                            window.location.replace("/bots/pend/123")
-                                        }else{
-                                            alert("등록에 실패하였습니다.")
-                                        }
-                                    })
-                                    //document.getElementsByClassName('widget__contaienr').reset();
-                                    //console.log(document.getElementById('widget__verification-checkbox').)
+                                        alert("성공적으로 등록되었습니다!")
+                                        window.location.replace(`/bots/pend/${data.data._id}`)
+                                    } else {
+                                        alert("등록에 실패하였습니다.")
+                                    }
                                 }}>
                             {({ errors, touched,
                                   values, isValid, setFieldTouched,

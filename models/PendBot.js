@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const PendBotSchema = new mongoose.Schema({
-    submitid: {
-        type: String,
-        required: true,
-    },
     name: {
         type: String,
         required: true,
@@ -25,7 +21,23 @@ const PendBotSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    _id:false
+    approved: {
+        type: Boolean,
+        default: false
+    },
+    deny: {
+        type: Boolean,
+        default: false
+    },
+    denyReason : {
+        type: String,
+        default: ""
+    },
+    pending: {
+
+        type: Boolean,
+        default: true
+    },
 },{ timestamps: true });
 
 export default mongoose.models.PendBot || mongoose.model("PendBot", PendBotSchema);
