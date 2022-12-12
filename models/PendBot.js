@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const PendBotSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
     botid: {
         type: String,
         required: true,
@@ -38,6 +34,18 @@ const PendBotSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
-},{ timestamps: true });
+    submitTime: {
+        type: String,
+        default: Date.now().toString()
+    },
+    slug: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+});
 
 export default mongoose.models.PendBot || mongoose.model("PendBot", PendBotSchema);

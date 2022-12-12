@@ -4,6 +4,7 @@ export const library = [
     'discord.js',
     'Eris',
     'discord.py',
+    'pycord',
     'discordcr',
     'Nyxx',
     'Discord.Net',

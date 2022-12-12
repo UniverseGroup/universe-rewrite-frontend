@@ -43,3 +43,12 @@ export const api = (jwt) => ky.create({
 export const botApi = () => ky.create({
     prefixUrl: "http://127.0.0.1:5000"
 })
+
+export const captchaApi = (token) => ky.create({
+    prefixUrl: "https://demo.mcaptcha.org/api/v1",
+    json: {
+        token: token,
+        key: process.env.CAPTCHA_SITEKEY,
+        secret: process.env.CAPTCHA_SECRET
+    }
+})

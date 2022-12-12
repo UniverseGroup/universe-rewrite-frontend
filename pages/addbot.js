@@ -54,8 +54,8 @@ export default function Addbot(){
                                 validationSchema={AddBotSubmitSchema}
                                 onSubmit={async (values) => {
                                     values.captcha = document.getElementById('mcaptcha__token').value;
-                                    const Resp = await api(localStorage.getItem('userToken')).post('bots/submit',{json:values})
-                                    if(Resp.ok){
+                                    try {
+                                        const Resp = await api(localStorage.getItem('userToken')).post('bots/submit',{json:values})
                                         const data = await Resp.json()
                                         window.scrollTo({
                                             top: 0,
@@ -65,8 +65,15 @@ export default function Addbot(){
                                         });
                                         alert("성공적으로 등록되었습니다!")
                                         window.location.replace(`/bots/pend/${data.data._id}`)
-                                    } else {
+                                    } catch (e) {
                                         alert("등록에 실패하였습니다.")
+                                        window.scrollTo({
+                                            top: 0,
+                                            behavior: 'smooth'
+                                            /* you can also use 'auto' behaviour
+                                                in place of 'smooth' */
+                                        });
+                                        window.location.reload()
                                     }
                                 }}>
                             {({ errors, touched,
@@ -150,7 +157,7 @@ export default function Addbot(){
                                     <Label For='intro' label='봇 소개' labelDesc='봇을 소개할 수 있는 간단한 설명을 적어주세요. (최대 60자)' error={errors.intro && touched.intro ? errors.intro : null} required>
                                         <Input name='intro' placeholder='국내 봇을 한 곳에서.' />
                                     </Label>
-                                    <Label For='intro' label='봇 설명' labelDesc={<>봇을 자세하게 설명해주세요! (최대 1500자)<br/>마크다운을 지원합니다!</>} error={errors.desc && touched.desc ? errors.desc : null} required>
+                                    <Label For='desc' label='봇 설명' labelDesc={<>봇을 자세하게 설명해주세요! (최대 1500자)<br/>마크다운을 지원합니다!</>} error={errors.desc && touched.desc ? errors.desc : null} required>
                                         <TextArea max={1500} name='desc' placeholder='봇에 대해 최대한 자세히 설명해주세요!' value={values.desc} setValue={(value) => setFieldValue('desc', value)} />
                                     </Label>
                                     <Label For='preview' label='설명 미리보기' labelDesc='다음 결과는 실제와 다를 수 있습니다.'>
