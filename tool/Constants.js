@@ -223,3 +223,14 @@ export function parseCookie(req){
 export function generateOauthURL(scope) {
     return Oauth.discord(scope)
 }
+
+export const reportcategories = [
+    "위법행위(불법 미디어매체 홍보, 불법 영상/사진물 공유등등)",
+    "봇을 이용한 테러",
+    "괴롭힘 혹은 모욕, 명예훼손등의 언어폭력",
+    "개인정보 유출",
+    "스팸 혹은 도배, 불필요한(의미없는)작동",
+    "오픈소스 라이센스를 위반한 권리 침해",
+    "디스코드 ToS위반 또는 UNIVERSE가이드라인 위반",
+    "기타"
+]

@@ -2,6 +2,7 @@ import * as Yup from 'yup'
 import YupKorean from 'yup-locales-ko'
 import {library,botCategories} from "./Constants";
 import {HTTPProtocol, ID, Prefix, Vanity,Url} from "./Regex";
+import { reportcategories } from './Constants';
 Yup.setLocale(YupKorean)
 Yup.addMethod(Yup.array, 'unique', function(message, mapper = a => a) {
     return this.test('unique', message || 'array must be unique', function(list) {
@@ -56,3 +57,10 @@ export const AddBotSubmitSchema = Yup.object({
         .max(1500, '봇 설명은 최대 1500자여야합니다.')
         .required('봇 설명은 필수 항목입니다.'),
 })
+
+export const ReportBotSchema = Yup.object(
+    {
+        category: Yup.mixed().oneOf(reportcategories,'카테고리는 필수 항목입니다.').required('카테고리는 필수 항목입니다.'),
+        description: Yup.string().min(10, '신고 내용은 최소 10자여야합니다.').max(1000, '신고 내용은 최대 1000자여야합니다.').required('신고 내용은 필수 항목입니다.'),
+    }
+)

@@ -52,3 +52,15 @@ export const captchaApi = (token) => ky.create({
         secret: process.env.CAPTCHA_SECRET
     }
 })
+
+export const generateOgImage = ({title,description,avatar,hearts,guilds}) => {
+    const u = new URL("http://211.38.204.211:3000/api/og")
+    u.searchParams.append("title",title)
+    u.searchParams.append("description",description)
+    u.searchParams.append("image",avatar?.replace("https://cdn.discordapp.com/avatars/",""))
+    u.searchParams.append("hearts",hearts)
+    u.searchParams.append("guilds",guilds)
+    u.searchParams.append("v",Date.now())
+    return u.href
+
+}
