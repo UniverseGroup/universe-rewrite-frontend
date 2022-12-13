@@ -9,10 +9,14 @@ import {parseCookie} from "../tool/Constants";
 import "../styles/odometer.css"
 import '@tremor/react/dist/esm/tremor.css';
 import { DefaultSeo } from "next-seo";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
+const SnowFall = dynamic(() => import("../components/SnowFall"), { ssr: false });
 const MyApp=({Component, pageProps, cookie})=> {
     console.log("cookie: ",cookie)
     return (
-        <div className="bg-discord-dark">
+        <div className="bg-discord-dark relative">
+            <SnowFall/>
             <DefaultSeo
                 titleTemplate="%s | UNIVERSE"
                 defaultTitle="UNIVERSE"
