@@ -1,33 +1,22 @@
-const Footer = () => {
+const Footer = ({onChange,defaultChecked}) => {
     return (
         <>
 
-            <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900">
+            <footer className="p-4 bg-gray-700">
                 <div className="md:flex md:justify-between px-20">
                     <div className="mb-6 md:mb-0">
                         <a href="https://flowbite.com/" className="flex items-center">
-                            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8"
+                            <img src="/logo.png" className="mr-3 h-12"
                                  alt="FlowBite Logo"/>
                                 <span
-                                    className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                                    className="self-center text-2xl font-semibold whitespace-nowrap text-white">UNIVERSE</span>
                         </a>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
-                            <ul className="text-gray-600 dark:text-gray-400">
-                                <li className="mb-4">
-                                    <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
-                                </li>
-                                <li>
-                                    <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow
+                            <h2 className="mb-6 text-sm font-semibold uppercase text-white">Follow
                                 us</h2>
-                            <ul className="text-gray-600 dark:text-gray-400">
+                            <ul className="text-gray-400">
                                 <li className="mb-4">
                                     <a href="https://github.com/themesberg/flowbite"
                                        className="hover:underline ">Github</a>
@@ -38,8 +27,8 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-                            <ul className="text-gray-600 dark:text-gray-400">
+                            <h2 className="mb-6 text-sm font-semibold  uppercase text-white">Legal</h2>
+                            <ul className=" text-gray-400">
                                 <li className="mb-4">
                                     <a href="#" className="hover:underline">Privacy Policy</a>
                                 </li>
@@ -48,12 +37,29 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div>
+                            <h2 className="mb-6 text-sm font-semibold  uppercase text-white">Function</h2>
+                            <ul className=" text-gray-400">
+                                <li className="mb-4">
+                                <label className="inline-flex relative items-center cursor-pointer">
+                                    <input type="checkbox" className="sr-only peer" onChange={onChange} defaultChecked={defaultChecked}/>
+                                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 
+                                    dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white 
+                                    after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full 
+                                    after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                    <span className="ml-3 text-sm font-medium text-gray-300">
+                                        눈내림효과
+                                    </span>
+                                </label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
                     <div className="sm:flex sm:items-center sm:justify-between">
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/"
-                                                                                            className="hover:underline">Flowbite™</a>. All Rights Reserved.
+        <span className="text-sm  sm:text-center text-gray-400">© 2022 <a href="https://flowbite.com/"
+                                                                                            className="hover:underline">UNIVERSE</a>. All Rights Reserved.
         </span>
                         <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                             <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

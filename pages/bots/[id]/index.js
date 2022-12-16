@@ -64,7 +64,7 @@ const BotPage = ({botData,botInfo}) => {
                                         </h4>
                                     </div>
                                 </a>
-                                <div className="text-white bg-discord-dark-hover rounded flex hover:bg-little-white-hover dark:hover:bg-discord-dark-hover cursor-pointer px-4 py-4 mb-1">
+                                <div className="bg-gradient-to-r from-[#f34444] to-[#378B29] text-white rounded flex hover:bg-little-white-hover dark:hover:bg-discord-dark-hover cursor-pointer px-4 py-4 mb-1">
                                     <h4 className="whitespace-nowrap">
                                         하트추가하기 • {botData?.hearts}
                                     </h4>
@@ -80,7 +80,7 @@ const BotPage = ({botData,botInfo}) => {
                         </div>
                         <div className="lg:flex lg:flex-row-reverse">
                             <div className="mb-1 w-full lg:w-1/4">
-                                <h2 className="3xl mb-2 font-bold">정보</h2>
+                                <h2 className="3xl mb-2 font-bold text-green-600">정보</h2>
                                 <div className="grid gap-4 grid-cols-2 px-4 py-4
                                 text-gray-300 bg-gray-700 rounded-sm">
                                     <div>접두사</div>
@@ -99,7 +99,7 @@ const BotPage = ({botData,botInfo}) => {
                                         botData?.trusted && (<div className="col-span-2">UNIVERSE 신뢰인증</div>)
                                     }
                                 </div>
-                                <h2 className="3xl mb-2 mt-2 font-bold">카테고리</h2>
+                                <h2 className="3xl mb-2 mt-2 font-bold text-green-600">카테고리</h2>
                                 <div className="flex flex-wrap">
                                     {
                                         botData?.category.map((category, index) => (
@@ -113,7 +113,7 @@ const BotPage = ({botData,botInfo}) => {
                                         ))
                                     }
                                 </div>
-                                <h2 className="3xl mb-2 mt-2 font-bold">등록자</h2>
+                                <h2 className="3xl mb-2 mt-2 font-bold text-green-600">등록자</h2>
                                 {
                                     botData?.owners.map((owner, index) => (
                                         <a key={index}

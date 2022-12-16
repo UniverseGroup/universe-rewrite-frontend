@@ -26,6 +26,10 @@ const BotSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    name:{
+        type: String,
+        required: true,
+    },
     prefix:{
         type: String,
         required: true,

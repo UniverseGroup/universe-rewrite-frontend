@@ -31,13 +31,13 @@ export function getProfileImg(id,avatar){
 
 export const api = (jwt) => ky.create({
     prefixUrl: "http://localhost:3000/api",
-    hooks: {
+    hooks:jwt? {
         beforeRequest: [
             request => {
                 request.headers.set('Authorization', `Bearer ${jwt}`)
             }
         ]
-    }
+    } : undefined
 })
 
 export const botApi = () => ky.create({

@@ -44,10 +44,10 @@ export default function Addbot(){
             <div className="min-h-screen">
                 <div className="bg-discord-black">
                     <div className="container mx-auto px-5 py-5">
-                        <h1 className="text-4xl text-white font-bold">
+                        <h1 className="text-4xl text-[#378B29] font-bold">
                             새로운 봇 추가하기
                         </h1>
-                        <p className="text-white text-lg">
+                        <p className="text-[#CC231E] text-lg">
                             여러분들만의 봇을 추가해보세요!
                         </p>
                         <Formik initialValues={initialValues}

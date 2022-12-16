@@ -6,7 +6,7 @@ const SnowFall = () => {
     snowflake2.src = '/snow2.png'
     const snows = [snowflake1, snowflake2]
     return (
-        <Snowfall snowflakeCount={290} images={snows} radius={[16, 20]}/>
+        <Snowfall snowflakeCount={50} images={snows} radius={[16, 18]}/>
     )
 }
 export default SnowFall;

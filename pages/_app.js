@@ -9,14 +9,17 @@ import {parseCookie} from "../tool/Constants";
 import "../styles/odometer.css"
 import '@tremor/react/dist/esm/tremor.css';
 import { DefaultSeo } from "next-seo";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import dynamic from "next/dynamic";
 const SnowFall = dynamic(() => import("../components/SnowFall"), { ssr: false });
 const MyApp=({Component, pageProps, cookie})=> {
+    const [snow, setSnow] = useState(true)
     console.log("cookie: ",cookie)
     return (
         <div className="bg-discord-dark relative">
-            <SnowFall/>
+            {
+                snow && <SnowFall/>
+            }
             <DefaultSeo
                 titleTemplate="%s | UNIVERSE"
                 defaultTitle="UNIVERSE"
@@ -42,7 +45,7 @@ const MyApp=({Component, pageProps, cookie})=> {
             <NextProgress options={{ showSpinner: false }}/>
             <Nav token={cookie.token}/>
           <Component {...pageProps} />
-            <Footer />
+            <Footer onChange={(e)=>setSnow(e.target.checked)} defaultChecked={snow}/>
         </div>
     )
 }
